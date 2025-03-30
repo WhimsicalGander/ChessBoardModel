@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChessBoardModel
 {
+    //This is going to hold all of the properties and methods that go with the board
     public class Board
     {
         public int Size { get; set; }
@@ -47,14 +48,16 @@ namespace ChessBoardModel
             }
         }
 
-       
+       //takes each piece and depending on the type marks the corresponding cells as possible moves
         public void MarkNextLegalMove(Cell targetCell, string pieceType)
         {
+            //depending on the type
             switch (pieceType)
             {
                 case "King":
                     targetCell.isCurrentlyOccupied = "K";
 
+                    //Checks every surrounding cell
                     for (int x = -1; x < 2; x++)
                     {
                         for (int y = -1; y < 2; y++)
@@ -78,7 +81,8 @@ namespace ChessBoardModel
                     int swap = 1;
                     int isRow = 1;
                     int isCol = 0;
-
+                    
+                    //uses the Bishop and Rook logic combined
                     //switches horizontal or vertical
                     for (int s = 0; s < 2; s++)
                     {
